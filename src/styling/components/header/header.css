@@ -1,0 +1,25 @@
+.header {
+    position: relative;
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    padding: 5px;
+    color: whitesmoke;
+    font-size: 20px;
+    background-image: url(../../../../public/img/header_background_img.jpg);
+}
+
+.intro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.time_container {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(10%, -50%);
+}
