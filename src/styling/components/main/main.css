@@ -1,0 +1,44 @@
+.main {
+    position: absolute;
+    height: 265px;
+    width: 35%;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(../../../../public/img/main_background_img.jpeg);
+    background-size: cover;
+    color: whitesmoke;
+}
+
+.temp {
+    font-size: 50px;
+}
+
+.country {
+    font-size: 25px;
+}
+
+.description {
+    font-size: 20px;
+}
+
+.humidity {
+    font-size: 20px;
+}
+
+.wind_speed {
+    font-size: 20px;
+}
+
+.temp_block {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    width: 56px;
+    height: 56px;
+}
