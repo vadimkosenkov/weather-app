@@ -42,7 +42,7 @@ function weather(_cityID) {
             const upperDescription = newDescription[0].toUpperCase() + newDescription.slice(1);
             description.innerText = upperDescription;
             humidity.innerText = `Относительная влажность: ${data.main.humidity}%`;
-            windSpeed.innerText = `Скорость ветра: ${data.wind.speed}м/с`;
+            windSpeed.innerText = `Скорость ветра: ${(data.wind.speed).toFixed(1)}м/с`;
             icon.setAttribute('src', `https://openweathermap.org/img/w/${data.weather[0].icon}.png`);
         })
         .catch(error => console.error(`Ошибка получение погоды. Причина:${error}`));
