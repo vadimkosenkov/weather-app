@@ -33,7 +33,7 @@ function weather(_cityID) {
     const cityID = _cityID;
     const apiUrl = 'https://api.openweathermap.org/data/2.5/';
     const apiKey = '444c2bfd114207e49fbfe7ecd26904d1';
-    const apiQuery = `${apiUrl}/weather?id='${cityID}'&units=metric&lang=ru&appid='${apiKey}`
+    const apiQuery = `${apiUrl}/weather?id=${cityID}&units=metric&lang=ru&appid=${apiKey}`
 
     fetch(apiQuery)
         .then(response => response.json())
