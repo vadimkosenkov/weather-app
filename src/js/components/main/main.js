@@ -1,6 +1,5 @@
 export const main = document.createElement('main');
 main.classList.add('main');
-root.append(main);
 
 const mainH1 = document.createElement('h1');
 mainH1.innerText = 'Погода';

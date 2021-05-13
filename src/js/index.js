@@ -1,9 +1,13 @@
 import '../styling/index.css';
-import './components/header/header.js';
-import './components/main/main.js';
-import './components/footer/footer.js';
+import { header } from './components/header/header.js';
+import { main } from './components/main/main.js';
+import { footer } from './components/footer/footer.js';
 
 const root = document.querySelector('#root');
+root.append(header);
+root.append(main);
+root.append(footer);
+
 const time = document.querySelector('.time');
 const country = document.querySelector('.country');
 const temp = document.querySelector('.temp');

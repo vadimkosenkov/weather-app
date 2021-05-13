@@ -1,6 +1,5 @@
 export const header = document.createElement('header');
 header.classList.add('header');
-root.append(header);
 
 const headerSpanIntro = document.createElement('span');
 headerSpanIntro.classList.add('intro');
