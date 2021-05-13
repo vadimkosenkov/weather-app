@@ -1,12 +1,11 @@
 import '../styling/index.css';
-import { header } from './components/header/header';
-import { main } from './components/main/main';
-import { footer } from './components/footer/footer';
+import { initHeader } from './components/header/header';
+import { initMain } from './components/main/main';
+import { initFooter } from './components/footer/footer';
 
-const root = document.querySelector('#root');
-root.append(header);
-root.append(main);
-root.append(footer);
+initHeader()
+initFooter()
+initMain()
 
 const time = document.querySelector('.time');
 const country = document.querySelector('.country');
@@ -19,7 +18,6 @@ const windSpeed = document.querySelector('.wind_speed');
 function timeValidation(hours, minutes) {
     const tmpHours = hours < 10 ? `0${hours}` : hours;
     const tmpMinutes = minutes < 10 ? `0${minutes}` : minutes;
-
     time.innerText = `${tmpHours}:${tmpMinutes}`;
 }
 
@@ -60,14 +58,3 @@ setTimeout(function updateWeather() {
 
     setTimeout(updateWeather, 3000);
 }, 0);
-
-// class WheatherWidget {
-//     constructor() {}
-//     getWeather() {
-//         weather(PLACES[0])
-//     }
-// }
-
-// const weatherWidget = new WheatherWidget
-// weatherWidget.getWeather()// const weatherWidget = new WheatherWidget
-// weatherWidget.getWeather()

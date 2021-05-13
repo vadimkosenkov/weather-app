@@ -1,35 +1,15 @@
-export const main = document.createElement('main');
-main.classList.add('main');
+import { CreaterElements } from '../creater_elements/create_elements'
 
-const mainH1 = document.createElement('h1');
-mainH1.innerText = 'Погода';
-main.append(mainH1);
-
-const mainDivCountry = document.createElement('div');
-mainDivCountry.classList.add('country');
-main.append(mainDivCountry);
-
-const mainDivTempBlock = document.createElement('div');
-mainDivTempBlock.classList.add('temp_block');
-main.append(mainDivTempBlock);
-
-const tempInTempBlock = document.createElement('span');
-tempInTempBlock.classList.add('temp');
-mainDivTempBlock.append(tempInTempBlock);
-
-const iconInTempBlock = document.createElement('img');
-iconInTempBlock.classList.add('icon');
-iconInTempBlock.setAttribute('src', ' ');
-mainDivTempBlock.append(iconInTempBlock);
-
-const descriptionInTempBlock = document.createElement('span');
-descriptionInTempBlock.classList.add('description');
-mainDivTempBlock.append(descriptionInTempBlock);
-
-const mainHumidity = document.createElement('div');
-mainHumidity.classList.add('humidity');
-main.append(mainHumidity);
-
-const mainWindSpeed = document.createElement('div');
-mainWindSpeed.classList.add('wind_speed');
-main.append(mainWindSpeed);
+function initMain() {
+    const main = new CreaterElements()
+    main.createElem('main').createClass('main').createAppend('#root')
+    main.createElem('mainH1').createClass('h1').createText('Погода').createAppend('.main')
+    main.createElem('div').createClass('country').createAppend('.main')
+    main.createElem('div').createClass('temp_block').createAppend('.main')
+    main.createElem('span').createClass('temp').createAppend('.temp_block')
+    main.createElem('img').createClass('icon').createAttr('src', ' ').createAppend('.temp_block')
+    main.createElem('span').createClass('description').createAppend('.temp_block')
+    main.createElem('div').createClass('humidity').createAppend('.main')
+    main.createElem('div').createClass('wind_speed').createAppend('.main')
+}
+export { initMain }
