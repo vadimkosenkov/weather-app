@@ -1,0 +1,9 @@
+{
+  "workbench.editor.wrapTabs": false,
+  "editor.formatOnSave": true,
+  "editor.rulers": [120],
+  "files.eol": "\n",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+}
