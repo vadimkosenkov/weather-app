@@ -33,6 +33,10 @@ CreatorElements.prototype.setContent = function(text) {
     this.selector.innerText = text;
     return this;
 };
+CreatorElements.prototype.setHTML = function(text) {
+    this.selector.innerHTML = text;
+    return this;
+};
 CreatorElements.prototype.setAttribute = function(name, value) {
     this.selector.setAttribute(name, value);
     return this;

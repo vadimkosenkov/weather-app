@@ -1,12 +1,13 @@
 import '../styling/index.css';
 import { initElements, elements } from './components/elements/elements';
+import { CreatorElements } from './components/creator_elements/creator_elements';
 
 initElements();
 
 const translator = {
     condition: {
         clear: 'ясно',
-        'partly - cloudy': 'малооблачно',
+        'partly-cloudy': 'малооблачно',
         cloudy: 'облачно с прояснениями',
         overcast: 'пасмурно',
         drizzle: 'морось',
@@ -24,10 +25,6 @@ const translator = {
         thunderstorm: 'гроза',
         'thunderstorm-with-rain': 'дождь с грозой',
         'thunderstorm-with-hail': 'гроза с градом',
-    },
-    second: {
-        one: 1,
-        two: 2,
     },
 };
 
@@ -55,6 +52,8 @@ function mapView() {
 ymaps.ready(init);
 ymaps.ready(mapView);
 
+let detailsArr;
+
 function weather(latArg, lonArg) {
     const apiUrl = 'https://api.weather.yandex.ru/v2/forecast?';
     const apiKey = '08f8cc4e-1db4-49b8-85b8-32f6411ed1d9';
@@ -67,6 +66,8 @@ function weather(latArg, lonArg) {
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            detailsArr = data.forecasts;
+            detailsWeather();
             tempValidation('', data.fact.temp, 'tempBlockTemp');
             tempValidation('Вчера в это время ', data.yesterday.temp, 'yesturdayTemp');
             tempValidation('Ощущается как ', data.fact.feels_like, 'feelsTemp');
@@ -75,9 +76,10 @@ function weather(latArg, lonArg) {
             elements.factWindSpeed.selector.innerText = `${data.fact.wind_speed} м/с`;
             elements.factHumidity.selector.innerText = `${data.fact.humidity}%`;
             elements.factPressure.selector.innerText = `${data.fact.pressure_mm} мм.рт.ст`;
-            elements.tempBlockIcon.selector.setAttribute(
+            elements.tempBlockIconWhite.selector.setAttribute(
                 'src',
-                `https://yastatic.net/weather/i/icons/blueye/color/svg/${data.fact.icon}.svg`
+                `https://yastatic.net/weather/i/icons/funky/light/${data.fact.icon}.svg`
+                // `https://yastatic.net/weather/i/icons/blueye/color/svg/${data.fact.icon}.svg`
             );
         })
         .catch(error => `Ошибка получение погоды. Причина:${error}`);
@@ -89,8 +91,6 @@ function tempValidation(text, t, selector) {
         elements[selector].selector.innerText = `0°`;
     } else if (t > 0) {
         elements[selector].selector.innerText = `${text}+${t}°`;
-    } else {
-        elements[selector].selector.innerText = `${text}-${t}°`;
     }
 }
 
@@ -115,34 +115,34 @@ function upperLetter(word) {
     return word[0].toUpperCase() + word.slice(1);
 }
 
-// function weather(_cityID) {
-//     const cityID = _cityID;
-//     const apiUrl = 'https://api.openweathermap.org/data/2.5/';
-//     const apiKey = '444c2bfd114207e49fbfe7ecd26904d1';
-//     const apiQuery = `${apiUrl}/weather?id=${cityID}&units=metric&lang=ru&appid=${apiKey}`;
+function detailsWeather() {
+    elements.factDetailsBlock.setHTML('');
+    let tmpHour = new Date().getHours() + 1;
+    let currentDetailsArr = detailsArr[0].hours;
+    console.log(detailsArr);
+    for (let i = 1; i < 7; i++) {
+        if (tmpHour > 23) {
+            tmpHour = 0;
+            currentDetailsArr = detailsArr[1].hours;
+        }
+        const newContainer = new CreatorElements('span', '.fact_details_block', `fact_details_container_${i}`);
+        newContainer.addClassName('fact_details_container');
 
-//     fetch(apiQuery)
-//         .then(response => response.json())
-//         .then(data => {
-//             country.innerText = `${data.name}, ${data.sys.country}`;
-//             temp.innerText = `${Math.round(data.main.temp)}°C`;
-//             const newDescription = data.weather[0].description;
-//             const upperDescription = newDescription[0].toUpperCase() + newDescription.slice(1);
-//             description.innerText = upperDescription;
-//             humidity.innerText = `Относительная влажность: ${data.main.humidity}%`;
-//             windSpeed.innerText = `Скорость ветра: ${data.wind.speed.toFixed(1)}м/с`;
-//             icon.setAttribute('src', `https://openweathermap.org/img/w/${data.weather[0].icon}.png`);
-//         })
-//         .catch(error => `Ошибка получение погоды. Причина:${error}`);
-// }
+        const divFirst = new CreatorElements(
+            'div',
+            `.fact_details_container_${i}`,
+            `fact_details_time_${i}`,
+            `${tmpHour}:00`
+        );
+        divFirst.addClassName('fact_details_time');
 
-// const PLACES = [625144, 627907, 629634, 627904, 620127, 625665];
-// weather(PLACES[0]);
+        const img = new CreatorElements('img', `.fact_details_container_${i}`, `fact_details_icon_${i}`);
+        img.setAttribute('src', `https://yastatic.net/weather/i/icons/funky/light/${currentDetailsArr[tmpHour].icon}.svg`);
+        img.addClassName('fact_details_icon');
 
-// let counter = 0;
-// setTimeout(function updateWeather() {
-//     weather(PLACES[counter]);
-//     counter = counter === PLACES.length - 1 ? 0 : counter + 1;
+        const divSecond = new CreatorElements('div', `.fact_details_container_${i}`, `fact_details_temp_${i}`, '3');
+        divFirst.addClassName('fact_details_temp');
 
-//     setTimeout(updateWeather, 3000);
-// }, 0);
+        tmpHour++;
+    }
+}
