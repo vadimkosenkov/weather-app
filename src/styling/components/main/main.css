@@ -1,44 +1,177 @@
-.main {
-    position: absolute;
-    height: 265px;
-    width: 35%;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 10px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-image: url(../../../../public/img/main_background_img.jpeg);
-    background-size: cover;
-    color: whitesmoke;
-}
+        .main {
+            width: 100%;
+            max-width: 1350px;
+        }
 
-.temp {
-    font-size: 50px;
-}
+        .section_one {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.country {
-    font-size: 25px;
-}
+        .weather_widget {
+            height: 100%;
+            height: 265px;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            background-image: linear-gradient(to bottom, #2376f3, #3e9eee);
+            color: whitesmoke;
+            margin: 5px;
+        }
 
-.description {
-    font-size: 20px;
-}
+        .weather_widget_block {
+            padding: 20px;
+        }
 
-.humidity {
-    font-size: 20px;
-}
+        .weather_map {
+            height: 265px;
+            width: 500px;
+            margin: 5px;
+        }
 
-.wind_speed {
-    font-size: 20px;
-}
+        .fact_temp_block {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
 
-.temp_block {
-    display: flex;
-    align-items: center;
-}
+        .fact_temp {
+            font-size: 52px;
+            font-weight: 700;
+        }
 
-.icon {
-    width: 56px;
-    height: 56px;
-}
+        .fact_icon {
+            width: 56px;
+            height: 56px;
+        }
+
+        .section_two {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section_two__inner {
+            height: 100%;
+            max-height: 265px;
+            width: 100%;
+            max-width: 1008px;
+            border: 1px solid;
+            border-radius: 10px;
+            margin: 5px
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        .fact_wind_icon {
+            /* background: url('../../../../public/img/wind_icon.png'); */
+            height: 24px;
+            width: 24px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: .7;
+        }
+
+        .fact_humidity_icon {
+            /* background-image: url('../../../../public/img/humidity_icon.png'); */
+            height: 24px;
+            width: 24px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: .7;
+        }
+
+        .fact_pressure_icon {
+            /* background-image: url('../../../../public/img/pressure_icon.png'); */
+            height: 24px;
+            width: 24px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: .7;
+        }
+
+        .fact_condition_block {
+            font-size: 16px;
+        }
+
+        .fact_description {
+            display: inline-block;
+            font-size: 16px;
+            width: 100%;
+            height: 100%;
+            max-height: 50px;
+        }
+
+        .fact_description:after {
+            content: '';
+            display: block;
+            width: 100%;
+            /* max-width: 380px; */
+            height: 1px;
+            background-color: whitesmoke;
+            margin: 15px auto;
+            opacity: .8;
+        }
+
+        .title_country {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .time {
+            font-size: 16px;
+            opacity: .7;
+        }
+
+        .yesturday_temp {
+            font-size: 16px;
+            opacity: .7;
+        }
+
+        .feels_temp {
+            opacity: .7;
+        }
+
+        .fact_icon {
+            margin: 0 15px;
+        }
+
+        ymaps {
+            border-radius: 10px;
+        }
+
+        .fact_wind_speed {
+            padding: 0 15px 0 6px;
+            vertical-align: super;
+        }
+
+        .fact_humidity {
+            padding: 0 15px 0 6px;
+            vertical-align: super;
+        }
+
+        .fact_pressure {
+            padding: 0 15px 0 6px;
+            vertical-align: super;
+        }
+
+        .fact_details_block {
+            display: flex;
+        }
+
+        .fact_details_icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .fact_details_container {
+            margin: 0 auto;
+            text-align: center;
+        }

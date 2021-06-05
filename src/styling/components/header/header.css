@@ -1,20 +1,20 @@
 .header {
     position: relative;
     height: 50px;
-    border: 1px solid grey;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.336);
     border-radius: 2px;
     margin-bottom: 5px;
     padding: 5px;
-    color: whitesmoke;
+    color: #333;
     font-size: 20px;
-    background-image: url(../../../../public/img/header_background_img.jpg);
+    background-color: white;
 }
 
-.intro {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.header_inner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
 }
 
 .time_container {
@@ -22,4 +22,16 @@
     top: 50%;
     left: 80%;
     transform: translate(10%, -50%);
+}
+
+#suggest {
+    width: 100%;
+    max-width: 340px;
+    height: 100%;
+    max-height: 30px;
+    font-size: 16px;
+    background: #eceef2;
+    border: 1px solid #eceef2;
+    border-radius: 5px;
+    padding-left: 10px;
 }
