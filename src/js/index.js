@@ -91,6 +91,8 @@ function tempValidation(text, t, selector) {
         elements[selector].selector.innerText = `0°`;
     } else if (t > 0) {
         elements[selector].selector.innerText = `${text}+${t}°`;
+    } else {
+        elements[selector].selector.innerText = `${text} ${t}°`;
     }
 }
 
@@ -119,7 +121,7 @@ function detailsWeather() {
     elements.factDetailsBlock.setHTML('');
     let tmpHour = new Date().getHours() + 1;
     let currentDetailsArr = detailsArr[0].hours;
-    console.log(detailsArr);
+    const tmpTemp = currentDetailsArr[tmpHour].temp;
     for (let i = 1; i < 7; i++) {
         if (tmpHour > 23) {
             tmpHour = 0;
@@ -140,8 +142,14 @@ function detailsWeather() {
         img.setAttribute('src', `https://yastatic.net/weather/i/icons/funky/light/${currentDetailsArr[tmpHour].icon}.svg`);
         img.addClassName('fact_details_icon');
 
-        const divSecond = new CreatorElements('div', `.fact_details_container_${i}`, `fact_details_temp_${i}`, '3');
-        divFirst.addClassName('fact_details_temp');
+        const divSecond = new CreatorElements(
+            'div',
+            `.fact_details_container_${i}`,
+            `fact_details_temp_${i}`,
+            `${tmpTemp > 0 ? '+' + tmpTemp : tmpTemp}°`
+        );
+
+        divSecond.addClassName('fact_details_temp');
 
         tmpHour++;
     }
